@@ -2,7 +2,7 @@ from typing import List
 
 from fastapi import APIRouter, HTTPException, Depends, status, Path, Query
 from sqlalchemy.orm import Session
-from src.services.auth import Auth as auth_service
+from src.services.auth import auth_service
 from src.database.db import get_db
 from src.database.models import User
 from src.schemas import ContactModel, ResponseContactModel, ContactEmail
@@ -20,7 +20,7 @@ async def create_new_contact(
     db: Session = Depends(get_db),
     current_user: User = Depends(auth_service.get_current_user),
 ):
-    print(contact)
+
     return await repository_contacts.create_contact(contact, current_user, db)
 
 

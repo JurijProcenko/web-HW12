@@ -71,7 +71,7 @@ async def update_contact(
     return target_contact
 
 
-async def delete_contact(contact_id, user: User, db) -> Contact | None:
+async def delete_contact(contact_id, user: User, db: Session) -> Contact | None:
     item = (
         db.query(Contact)
         .filter(and_(Contact.id == contact_id, Contact.user_id == user.id))
